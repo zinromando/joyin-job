@@ -8,6 +8,8 @@
   <% @activities.each do |activity| %>
   <tr>
     <td>
+      <%= render_activity_status(activity) %>
+
       <%= link_to(activity.subject, admin_activity_path(activity)) %>
     </td>
     <td>

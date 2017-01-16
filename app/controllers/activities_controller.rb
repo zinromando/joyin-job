@@ -2,7 +2,7 @@ class ActivitiesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
 
   def index
-    @activities = Activity.all
+    @activities = Activity.where(is_hidden: false).order('created_at DESC')
   end
 
   def new
@@ -47,6 +47,6 @@ class ActivitiesController < ApplicationController
   private
 
   def activity_params
-    params.require(:activity).permit(:subject, :description, :field, :fee, :location, :contact_email)
+    params.require(:activity).permit(:subject, :description, :field, :fee, :location, :contact_email, :is_hidden)
   end
 end
