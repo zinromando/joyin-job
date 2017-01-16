@@ -1,0 +1,10 @@
+<h3> 投递自荐信到 <%= @activity.subject %> </h3>
+
+<hr>
+
+<%= simple_form_for [@activity, @intro_letter] do |f| %>
+  <%= f.input :content, :label => "自我简介" %>
+  <%= f.input :attachment, :label => "自荐信(PDF格式)" %>
+
+  <%= f.submit "送出", :class => "btn btn-info" %>
+<% end %>

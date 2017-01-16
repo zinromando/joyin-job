@@ -15,4 +15,6 @@ class Activity < ApplicationRecord
     self.is_hidden = true
     save
   end
+
+  has_many :IntroLetters
 end

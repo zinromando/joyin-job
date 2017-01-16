@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170116191702) do
+ActiveRecord::Schema.define(version: 20170116211226) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "subject"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 20170116191702) do
     t.string   "location"
     t.string   "contact_email"
     t.boolean  "is_hidden",     default: true
+  end
+
+  create_table "intro_letters", force: :cascade do |t|
+    t.integer  "activity_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "attachment"
   end
 
   create_table "users", force: :cascade do |t|
