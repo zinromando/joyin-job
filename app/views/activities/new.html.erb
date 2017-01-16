@@ -1,0 +1,9 @@
+<h1> Post a new activity </h1>
+
+<%= simple_form_for @activity do |f| %>
+
+<%= f.input :subject %>
+<%= f.input :description %>
+
+  <%= f.submit "Submit" %>
+<% end %>

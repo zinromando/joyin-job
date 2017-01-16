@@ -1,0 +1,20 @@
+<div class="pull-right">
+  <%= link_to("Post a new activity", new_activity_path, :class => "btn btn-success" ) %>
+</div>
+
+<table class="table table-boldered">
+  <% @activities.each do |activity| %>
+  <tr>
+    <td>
+      <%= link_to(activity.subject, activity_path(activity)) %>
+    </td>
+    <td>
+      <%= link_to("Edit", edit_activity_path(activity)) %> |
+      <%= link_to("Destroy", activity_path(activity), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
+    </td>
+    <td>
+      <%= activity.created_at %>
+    </td>
+  </tr>
+  <% end %>
+</table>
