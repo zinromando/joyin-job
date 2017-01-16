@@ -1,20 +1,38 @@
 <div class="pull-right">
-  <%= link_to("Post a new activity", new_activity_path, :class => "btn btn-success" ) %>
+    <%= link_to("创建一个新活动", new_activity_path, :class => "btn btn-success" ) %>
 </div>
 
 <table class="table table-boldered">
-  <% @activities.each do |activity| %>
-  <tr>
-    <td>
-      <%= link_to(activity.subject, activity_path(activity)) %>
-    </td>
-    <td>
-      <%= link_to("修改", edit_activity_path(activity)) %> |
-      <%= link_to("删除", activity_path(activity), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
-    </td>
-    <td>
-      <%= activity.created_at %>
-    </td>
-  </tr>
-  <% end %>
+    <thead>
+        <tr>
+            <td>活动</td>
+            <td>活动时间</td>
+            <td>地点</td>
+            <td>费用</td>
+            <td>刊登时间</td>
+        </tr>
+
+    </thead>
+
+    <tbody>
+        <% @activities.each do |activity| %>
+        <tr>
+          <td>
+              <%= link_to(activity.subject, activity_path(activity)) %>
+          </td>
+          <td>
+              <%= activity.field %>
+          </td>
+          <td>
+              <%= activity.location %>
+          </td>
+          <td>
+              <%= activity.fee %>
+          </td>
+          <td>
+              <%= activity.created_at %>
+          </td>
+       </tr>
+       <% end %>
+    </tbody>
 </table>
