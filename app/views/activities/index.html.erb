@@ -2,6 +2,16 @@
     <%= link_to("创建一个新活动", new_activity_path, :class => "btn btn-success" ) %>
 </div>
 
+<div class="dropdown clearfix pull-right">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> 排序 <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
+        <li>
+            <%= link_to("按照发表时间排序", activities_path ) %>
+        </li>
+    </ul>
+</div>
+
 <table class="table table-boldered">
     <thead>
         <tr>
@@ -17,22 +27,22 @@
     <tbody>
         <% @activities.each do |activity| %>
         <tr>
-          <td>
-              <%= link_to(activity.subject, activity_path(activity)) %>
-          </td>
-          <td>
-              <%= activity.field %>
-          </td>
-          <td>
-              <%= activity.location %>
-          </td>
-          <td>
-              <%= activity.fee %>
-          </td>
-          <td>
-              <%= activity.created_at %>
-          </td>
-       </tr>
-       <% end %>
+            <td>
+                <%= link_to(activity.subject, activity_path(activity)) %>
+            </td>
+            <td>
+                <%= activity.field %>
+            </td>
+            <td>
+                <%= activity.location %>
+            </td>
+            <td>
+                <%= activity.fee %>
+            </td>
+            <td>
+                <%= activity.created_at %>
+            </td>
+        </tr>
+        <% end %>
     </tbody>
 </table>
