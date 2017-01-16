@@ -3,4 +3,8 @@ Rails.application.routes.draw do
 
   resources :activities
   root 'activities#index'
+
+  namespace :admin do
+    resources :activities
+  end
 end
