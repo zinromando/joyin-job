@@ -1,0 +1,4 @@
+<h2> <%= @activity.subject %> - 自荐信列表 </h2>
+
+<hr>
+<%= render :partial => "intro_letter", :collection => @intro_letters, :as => :intro_letter %>
