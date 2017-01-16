@@ -1,6 +1,7 @@
 class Admin::ActivitiesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
   before_action :require_is_admin
+  layout 'admin'
 
   def index
     @activities = Activity.all
@@ -43,6 +44,20 @@ class Admin::ActivitiesController < ApplicationController
     @activity.destroy
 
     redirect_to admin_activities_path
+  end
+
+  def publish
+    @activity = Activity.find(params[:id])
+    @activity.publish!
+
+    redirect_to :back
+  end
+
+  def hide
+    @activity = Activity.find(params[:id])
+    @activity.hide!
+
+    redirect_to :back
   end
 
   private

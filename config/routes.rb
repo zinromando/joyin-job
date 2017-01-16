@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   root 'activities#index'
 
   namespace :admin do
-    resources :activities
+    resources :activities do
+      member do
+        post :publish
+        post :hide
+      end
+    end
   end
 end

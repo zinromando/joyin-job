@@ -11,6 +11,11 @@ class ActivitiesController < ApplicationController
 
   def show
     @activity = Activity.find(params[:id])
+
+    if @activity.is_hidden
+      flash[:warning] = '本活动已经结束'
+      redirect_to root_path
+    end
   end
 
   def edit

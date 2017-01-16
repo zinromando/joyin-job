@@ -1,24 +1,33 @@
 <div class="pull-right">
-  <%= link_to("创建新活动", new_admin_activity_path, :class => "btn btn-success" ) %>
+    <%= link_to("创建新活动", new_admin_activity_path, :class => "btn btn-success" ) %>
 </div>
 
 <br><br>
 
 <table class="table table-boldered">
-  <% @activities.each do |activity| %>
-  <tr>
-    <td>
-      <%= render_activity_status(activity) %>
+    <% @activities.each do |activity| %>
+    <tr>
+        <td>
+            <%= render_activity_status(activity) %>
 
-      <%= link_to(activity.subject, admin_activity_path(activity)) %>
-    </td>
-    <td>
-      <%= link_to("Edit", edit_admin_activity_path(activity)) %> |
-      <%= link_to("Destroy", admin_activity_path(activity), :method => :delete, :data => { :confirm => "Are you sure? " }) %>
-    </td>
-    <td>
-      <%= activity.created_at %>
-    </td>
-  </tr>
-  <% end %>
+            <%= link_to(activity.subject, admin_activity_path(activity)) %>
+        </td>
+        <td>
+            <%= link_to("修改", edit_admin_activity_path(activity)) %>
+            |
+            <%= link_to("删除", admin_activity_path(activity), :method => :delete, :data => { :confirm => "Are you sure? " }) %>
+
+            <% if activity.is_hidden %>
+
+            <%= link_to("首页显示", publish_admin_activity_path(activity) , :method => :post, :class => "btn btn-xs btn-default") %>
+        <% else %>
+            <%= link_to("首页隐藏", hide_admin_activity_path(activity), :method => :post,  :class => "btn btn-xs btn-default") %>
+            <% end %>
+
+        </td>
+        <td>
+            <%= activity.created_at %>
+        </td>
+    </tr>
+    <% end %>
 </table>
