@@ -25,17 +25,16 @@
         <td> <%= link_to(activity.IntroLetters.count, admin_activity_intro_letters_path(activity)) %> </td>
         <td> <%= activity.field %> </td>
         <td>
-            <%= link_to("修改", edit_admin_activity_path(activity)) %>
-            |
-            <%= link_to("删除", admin_activity_path(activity), :method => :delete, :data => { :confirm => "Are you sure? " }) %>
-            |
+            <%= link_to edit_admin_activity_path(activity), class: "btn btn-xs btn-info" do %><i class="fa fa-pencil"></i><% end %>
+            <%= link_to admin_activity_path(activity), :method => :delete, :class => "btn btn-xs btn-danger", :data => { :confirm => "Are you sure? " } do %><i class="fa fa-trash-o"></i><% end %>
+
             <% if activity.is_hidden %>
 
-            <%= link_to("首页显示", publish_admin_activity_path(activity) , :method => :post, :class => "btn btn-xs btn-default") %>
-        <% else %>
-            <%= link_to("首页隐藏", hide_admin_activity_path(activity), :method => :post,  :class => "btn btn-xs btn-default") %>
-            <% end %>
+            <%= link_to publish_admin_activity_path(activity) , :method => :post, :class => "btn btn-xs btn-success" do %><i class="fa fa-eye"></i><% end %>
 
+            <% else %>
+            <%= link_to hide_admin_activity_path(activity), :method => :post,  :class => "btn btn-xs btn-warning" do %><i class="fa fa-eye-slash"></i><% end %>
+            <% end %>
         </td>
         <td>
             <%= activity.created_at %>
