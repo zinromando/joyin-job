@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  resources :welcome do
+  end
+
   resources :activities do
     resources :intro_letters
   end
-  root 'activities#index'
+  root 'welcome#index'
 
   namespace :admin do
     resources :activities do
