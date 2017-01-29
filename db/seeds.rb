@@ -9,7 +9,7 @@
 puts 'Hello World!'
 puts '这个种子档会自动建立一个账号，并随机创建10个activities，10个隐藏的activities'
 
-create_account = User.create([email: 'admin@joyin.com', password: '123456', password_confirmation: '123456', is_admin: 'true'])
+create_account = User.create([email: 'example@joyin.com', password: '123456', password_confirmation: '123456', is_admin: 'true'])
 puts 'Admin account created.'
 
 activity_info = [
